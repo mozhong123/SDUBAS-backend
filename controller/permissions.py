@@ -141,7 +141,7 @@ async def return_privilege_list(request: Request, service_type: int = Query()):
 
 @permissions_router.post("/add_default_role")  # 创建默认角色(使用)
 @standard_response
-async def add_role(request: Request, data: type.permissions.create_default_role_Base, user=Depends(auth_login)):
+async def add_role(request: Request, data: type.permissions.create_default_role_Base):
     db = permissionModel()
     res = data.roles
     superiorId = db.search_user_default_role(user['user_id'])
